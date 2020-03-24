@@ -63,7 +63,7 @@ entrypoints==0.3
 et-xmlfile==1.0.1
 fastcache==1.1.0
 filelock==3.0.12
-Flask==0.12.4
+Flask==1.0
 Flask-AutoIndex==0.6.4
 Flask-Compress==1.4.0
 Flask-Limiter==0.9.3
