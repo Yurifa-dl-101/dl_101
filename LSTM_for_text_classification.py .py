@@ -79,8 +79,8 @@ sequences_matrix = sequence.pad_sequences(sequences,maxlen=max_len) # keras.prep
 
 def RNN():
     inputs = Input(name='inputs',shape=[max_len])
-    layer = Embedding(max_words,50,input_length=max_len)(inputs)
-    layer = LSTM(64)(layer)
+    layer = Embedding(max_words,50,input_length=max_len)(inputs) # transform Output shape to 3D tensor with shape: `(batch_size, 150, 50) `50` as embedding dimensionality to getting context of sentence 
+    layer = LSTM(64)(layer) # default LSTM output to 64 layer with default activation function linear
     layer = Dense(256,name='FC1')(layer) # nn 256 layers namely fc1
     layer = Activation('relu')(layer) # Applies an relu activation function to an output
     layer = Dropout(0.5)(layer) # applies min(1., max(0., 0.5)) no negative value or more than 1
