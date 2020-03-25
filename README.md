@@ -6,3 +6,5 @@ basic deep learning
   virtualenv -p python3 env
   
   pip install -r requirements.txt
+
+![alt text](https://raw.githubusercontent.com/Yurifa-dl-101/dl_101/edit/master/model.png)
