@@ -81,11 +81,11 @@ def RNN():
     inputs = Input(name='inputs',shape=[max_len])
     layer = Embedding(max_words,50,input_length=max_len)(inputs)
     layer = LSTM(64)(layer)
-    layer = Dense(256,name='FC1')(layer)
-    layer = Activation('relu')(layer)
-    layer = Dropout(0.5)(layer)
-    layer = Dense(1,name='out_layer')(layer)
-    layer = Activation('sigmoid')(layer)
+    layer = Dense(256,name='FC1')(layer) # nn 256 layers namely fc1
+    layer = Activation('relu')(layer) # Applies an relu activation function to an output
+    layer = Dropout(0.5)(layer) # applies min(1., max(0., 0.5)) no negative value or more than 1
+    layer = Dense(1,name='out_layer')(layer) # nn 256 layers namely out_layer
+    layer = Activation('sigmoid')(layer) # Applies an sigmoid activation function to an output
     model = Model(inputs=inputs,outputs=layer)
     return model
 
