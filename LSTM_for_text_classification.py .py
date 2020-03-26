@@ -70,6 +70,10 @@ tok = Tokenizer(num_words=max_words) # keras.preprocessing.text tokenizer object
 
 tok.fit_on_texts(X_train) # Updates internal vocabulary based on a list of texts
 
+"""
+All words have been mapped to integers and the integers represent the words sorted by their frequency. This is very common in text analysis to represent a dataset like this. So 4 represents the 4th most used word, 5 the 5th most used word and so on...
+"""
+
 sequences = tok.texts_to_sequences(X_train) # Transforms each text in texts to a sequence of integers
 
 sequences_matrix = sequence.pad_sequences(sequences,maxlen=max_len) # keras.preprocessing sequence method to transforms a list of sequences (lists of integers) into a 2D Numpy array of shape `(num_samples, num_timesteps)`. `num_timesteps` is either the `maxlen` argument if provided, or the length of the longest sequence otherwise
@@ -79,7 +83,7 @@ sequences_matrix = sequence.pad_sequences(sequences,maxlen=max_len) # keras.prep
 
 def RNN():
     inputs = Input(name='inputs',shape=[max_len])
-    layer = Embedding(max_words,50,input_length=max_len)(inputs) # transform Output shape to 3D tensor with shape: `(batch_size, 150, 50) `50` as embedding dimensionality to getting context of sentence 
+    layer = Embedding(max_words,50,input_length=max_len)(inputs) # transform Output shape to 3D tensor with shape: `(batch_size, 150, 50) `50` as embedding dimensionality to getting context of sentence 50*1000= 50000 `will be 150` `vectors` `of 50 dimensions each`
     layer = LSTM(64)(layer) # default LSTM output to 64 layer with default activation function linear
     layer = Dense(256,name='FC1')(layer) # nn 256 layers namely fc1
     layer = Activation('relu')(layer) # Applies an relu activation function to an output
